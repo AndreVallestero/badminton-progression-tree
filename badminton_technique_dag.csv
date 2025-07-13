@@ -1,0 +1,49 @@
+Technique,Category,Dependency 1,Dependency 2
+Forehand (V) Grip,Racket Handling,,
+Backhand Grip,Racket Handling,,
+Bevel Grip,Racket Handling,,
+Panhandle Grip,Racket Handling,,
+Grip Switch,Racket Handling,Forehand (V) Grip,Backhand Grip
+Forearm Pronation,Racket Handling,Forehand (V) Grip,
+Forearm Supination,Racket Handling,Backhand Grip,Bevel Grip
+Finger Squeeze,Racket Handling,Forearm Pronation,Forearm Supination
+Service Return Form,Form,Split Step,Grip Switch
+Defensive Form,Form,Split Step,Grip Switch
+Aggressive Form,Form,Directional Split Step,Grip Switch
+Lunge,Footwork,Split Step,
+Chasse,Footwork,Split Step,
+Back Crossover,Footwork,Chasse,
+Non-Racket Pivot,Footwork,Split Step,
+Split Step,Footwork,,
+Directional Split Step,Footwork,Split Step,
+Forehand Footwork,Footwork,Back Crossover,
+Backhand Footwork,Footwork,Chasse,Non-Racket Pivot
+Rear Forehand Footwork,Footwork,Back Crossover,
+Rear Backhand Footwork,Footwork,Non-Racket Pivot,
+Forehand Lift,Shot,Forehand Footwork,Lunge
+Backhand Lift,Shot,Backhand Footwork,Lunge
+Clear,Shot,Finger Squeeze,Rear Forehand Footwork
+Round The Head Clear,Shot,Clear,Rear Backhand Footwork
+Backhand Clear,Shot,Backhand Footwork,Finger Squeeze
+Backhand Smash,Shot,Backhand Clear,
+Overhead Smash,Shot,Clear,
+Scissor Kick Smash,Shot,Overhead Smash,
+Jump Out Smash,Shot,Overhead Smash,
+Jump Smash,Shot,Overhead Smash,
+Forehand Net Kill,Shot,Aggressive Form,Forehand Drive
+Backhand Net Kill,Shot,Aggressive Form,Backhand Drive
+Forehand Net,Shot,Lunge,
+Backhand Net,Shot,Lunge,
+Forehand Net Spin,Shot,Forehand Net,
+Backhand Net Spin,Shot,Backhand Net,
+Forehand Net Brush,Shot,Forehand Net Kill,
+Backhand Net Brush,Shot,Backhand Net Kill,
+Forehand Drop,Shot,Clear,
+Backhand Drop,Shot,Backhand Clear,
+Forehand Drive,Shot,Forehand (V) Grip,
+Backhand Drive,Shot,Backhand Grip,
+Defense Lift,Shot,Defensive Form,Backhand Lift
+Defense Net,Shot,Defensive Form,Backhand Lift
+Backhand Serve,Serve,Backhand Grip,
+Backhand Flick Serve,Serve,Backhand Serve,Finger Squeeze
+Forehand Serve,Serve,Forehand (V) Grip,
