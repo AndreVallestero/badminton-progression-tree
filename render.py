@@ -21,7 +21,7 @@ for _, row in df.iterrows():
     category_techniques[row["Category"]].append(row["Technique"])
 
 width = 9999
-max_width = 2496
+max_width = 2200
 
 while width > max_width:
     categories = list(category_techniques.keys())
@@ -35,7 +35,7 @@ while width > max_width:
 
     # Randomly vary graph-level attributes
     rankdirs = ["LR"]
-    splines = ["polyline", "ortho", "true"]
+    splines = ["true"]
     ranksep = round(random.uniform(0.5, 2), 2)
     nodesep = round(random.uniform(0.5, 2), 2)
 
