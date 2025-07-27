@@ -7,31 +7,32 @@ import io
 from collections import defaultdict
 import os
 
-CSV_PATH = "badminton_technique_dag.csv"
-OUTPUT = "badminton_technique_dag"
+CSV_PATH = "badminton_skill_dag.csv"
+OUTPUT = "badminton_skill_dag"
 
 df = pd.read_csv(CSV_PATH)
 
-# Mapping of technique to category
-technique_to_category = dict(zip(df["Technique"], df["Category"]))
+# Mapping of skill to category
+skill_to_category = dict(zip(df["Skill"], df["Category"]))
 
-# Organize techniques by category
-category_techniques = defaultdict(list)
+# Organize skills by category
+category_skills = defaultdict(list)
 for _, row in df.iterrows():
-    category_techniques[row["Category"]].append(row["Technique"])
+    category_skills[row["Category"]].append(row["Skill"])
 
-width = 9999
+width = 99999
 max_width = 2200
 
 while width > max_width:
-    categories = list(category_techniques.keys())
+    categories = list(category_skills.keys())
     random.shuffle(categories)
 
     for category in categories:
-        random.shuffle(category_techniques[category])
+        random.shuffle(category_skills[category])
 
     # Create the Graphviz DAG
-    dot = graphviz.Digraph(format="svg")
+    dot = graphviz.Digraph(format="svg", engine='dot')
+
 
     # Randomly vary graph-level attributes
     rankdirs = ["LR"]
@@ -43,18 +44,20 @@ while width > max_width:
             splines=random.choice(splines),
             nodesep=str(nodesep),
             ranksep=str(ranksep),
-            concentrate="true")
+            concentrate="true",
+            compound="true",
+            searchsize="1000")
 
     # Add clusters per category
     for category in categories:
         with dot.subgraph(name=f"cluster_{category}") as sub:
             sub.attr(label=category, style='filled', color='lightgrey')
-            for technique in category_techniques[category]:
-                sub.node(technique)
+            for skill in category_skills[category]:
+                sub.node(skill)
 
     # Add edges (dependencies)
     for _, row in df.iterrows():
-        target = row["Technique"]
+        target = row["Skill"]
         for dep_col in ["Dependency 1", "Dependency 2", "Dependency 3", "Dependency 4"]:
             source = row.get(dep_col)
             if pd.notna(source):
@@ -70,9 +73,9 @@ while width > max_width:
 
 # Save
 print("solution found")
-if os.path.exists("badminton_technique_dag.svg"):
-    os.remove("badminton_technique_dag.svg")
-os.rename('temp.svg', 'badminton_technique_dag.svg')
-with open('badminton_technique_dag.png', 'wb') as f:
+if os.path.exists("badminton_skill_dag.svg"):
+    os.remove("badminton_skill_dag.svg")
+os.rename('temp.svg', 'badminton_skill_dag.svg')
+with open('badminton_skill_dag.png', 'wb') as f:
     f.write(png_bytes)
 

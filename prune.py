@@ -4,7 +4,7 @@ from collections import defaultdict, deque
 def build_graph(df):
     graph = defaultdict(set)
     for _, row in df.iterrows():
-        tech = row['Technique']
+        tech = row['Skill']
         for dep in [row['Dependency 1'], row['Dependency 2'], row['Dependency 3'], row['Dependency 4']]:
             if pd.notna(dep) and dep:
                 graph[tech].add(dep)
@@ -25,7 +25,7 @@ def remove_transitive_dependencies(df):
     cleaned_rows = []
 
     for _, row in df.iterrows():
-        tech = row['Technique']
+        tech = row['Skill']
         direct_deps = [d for d in [row['Dependency 1'], row['Dependency 2'], row['Dependency 3'], row['Dependency 4']] if pd.notna(d) and d]
         indirect_deps = set()
 
@@ -37,7 +37,7 @@ def remove_transitive_dependencies(df):
         filtered_deps += [""] * (4 - len(filtered_deps))  # pad to 4 dependencies
 
         cleaned_rows.append({
-            "Technique": tech,
+            "Skill": tech,
             "Category": row["Category"],
             "Dependency 1": filtered_deps[0],
             "Dependency 2": filtered_deps[1],
@@ -47,7 +47,7 @@ def remove_transitive_dependencies(df):
 
     return pd.DataFrame(cleaned_rows)
 
-file = "badminton_technique_dag.csv"
+file = "badminton_skill_dag.csv"
 
 df = pd.read_csv(file)
 clean_df = remove_transitive_dependencies(df)
